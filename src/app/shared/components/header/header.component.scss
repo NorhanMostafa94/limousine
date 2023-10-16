@@ -1,0 +1,15 @@
+@import "abstracts/variables";
+
+.navbar {
+    min-height: 5rem;
+    &-nav {
+        .nav-item {
+            .nav-link {
+                &.active {
+                    color: $primary-main;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
