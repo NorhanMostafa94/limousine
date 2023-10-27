@@ -1,3 +1,6 @@
+@import "abstracts/variables";
+
 .reservation {
-    height: 40rem;
+    height: 50rem;
+    background-color: $bg-dark;
 }

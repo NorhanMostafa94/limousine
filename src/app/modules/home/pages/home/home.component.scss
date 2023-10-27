@@ -2,13 +2,17 @@
 
 .home {
     height: 58rem;
+    // background-color: #1E1E28;
+    background-image: url("../../../../../assets/images/home-cover.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     &__header {
         &-text {
             .description {
                 font-size: 1.2rem;
                 line-height: 1.5;
                 .main-text {
-                    color: $primary-main;
+                    color: $white;
                     font-size: 2.5rem;
                     font-weight: 900;
                 }

@@ -2,29 +2,31 @@
   <div
     class="home__header h-100 d-flex align-items-center justify-content-between"
   >
-    <div class="row m-0 w-100">
-      <div class="col-sm-6">
-        <div class="home__header-img">
-          <img src="assets/images/home.png" alt="home" class="img-fluid" />
-        </div>
-      </div>
-      <div class="col-sm-6">
+    <div class="row m-0 w-100 justify-content-end">
+      <div class="col-sm-4">
         <div
           class="home__header-text h-100 d-flex flex-column justify-content-center"
         >
-          <div class="description text-end">
+          <div class="description">
             <span class="main-text">MOVING THOSE WHO MOVE THE WORLD </span>
-            <p>Luxurious Executive Transportation Worldwide</p>
+            <p class="text-white">
+              Luxurious Executive Transportation Worldwide
+            </p>
           </div>
-          <div class="d-flex justify-content-end mt-3">
+          <div class="d-flex mt-3">
             <button class="btn btn--lg btn--primary">Book Now</button>
           </div>
         </div>
       </div>
+      <!-- <div class="col-sm-8">
+        <div class="home__header-img">
+          <img src="assets/images/car.png" alt="home" class="img-fluid" />
+        </div>
+      </div> -->
     </div>
   </div>
 
-  <app-about-us></app-about-us>
+  <app-about-us id="about"></app-about-us>
 
-  <app-reservation></app-reservation>
+  <app-reservation id="form"></app-reservation>
 </section>
