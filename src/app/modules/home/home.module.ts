@@ -7,13 +7,14 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './pages';
 
 // Components
-import { AboutUsComponent } from './components/';
+import { AboutUsComponent, ReservationComponent } from './components/';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 const PAGES = [HomeComponent];
-const COMPONENTS = [AboutUsComponent];
+const COMPONENTS = [AboutUsComponent, ReservationComponent];
 
 @NgModule({
   declarations: [...COMPONENTS, ...PAGES],
-  imports: [CommonModule, HomeRoutingModule],
+  imports: [CommonModule, HomeRoutingModule, SharedModule],
 })
 export class HomeModule {}
