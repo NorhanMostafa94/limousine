@@ -14,15 +14,23 @@ import {
   AboutUsComponent,
   ReservationComponent,
   GalleryComponent,
+  ServiceCardComponent,
+  ServicesComponent,
+  ContactUsComponent,
 } from './components/';
-import { ServicesComponent } from './components/services/services.component';
-import { ServiceCardComponent } from './components/service-card/service-card.component';
 
 const PAGES = [HomeComponent];
-const COMPONENTS = [AboutUsComponent, ReservationComponent, GalleryComponent];
+const COMPONENTS = [
+  AboutUsComponent,
+  ReservationComponent,
+  GalleryComponent,
+  ServiceCardComponent,
+  ServicesComponent,
+  ContactUsComponent,
+];
 
 @NgModule({
-  declarations: [...COMPONENTS, ...PAGES, GalleryComponent, ServicesComponent, ServiceCardComponent],
+  declarations: [...COMPONENTS, ...PAGES],
   imports: [CommonModule, HomeRoutingModule, SharedModule],
 })
 export class HomeModule {}
