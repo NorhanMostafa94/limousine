@@ -98,16 +98,14 @@
                     <mat-datepicker #picker></mat-datepicker>
                   </mat-form-field>
                 </div>
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-6 mb-4">
                   <label class="d-block">Time</label>
-                  <mat-form-field class="w-100">
-                    <input
-                      matInput
-                      placeholder="Last name, First name"
-                      formControlName="time"
-                      required
-                    />
-                  </mat-form-field>
+                  <ngx-timepicker-field
+                    [defaultTime]="'11:11 am'"
+                    matInput
+                    formControlName="time"
+                    [controlOnly]="true"
+                  ></ngx-timepicker-field>
                 </div>
               </div>
 
@@ -117,20 +115,32 @@
                   <mat-form-field class="w-100">
                     <input
                       matInput
-                      placeholder="Last name, First name"
+                      placeholder="Enter location"
                       formControlName="location"
                       required
                     />
                   </mat-form-field>
                 </div>
               </div>
-              <div>
-                <button mat-button matStepperPrevious>Back</button>
-                <button mat-button matStepperNext>Next</button>
+              <div class="d-flex">
+                <button
+                  mat-button
+                  matStepperPrevious
+                  class="btn btn--sm btn--text"
+                >
+                  Back
+                </button>
+                <button
+                  mat-button
+                  matStepperNext
+                  class="btn btn--sm btn--primary"
+                >
+                  Book
+                </button>
               </div>
             </form>
           </mat-step>
-          <mat-step>
+          <!-- <mat-step>
             <ng-template matStepLabel>Done</ng-template>
             <p>You are now done.</p>
             <div>
@@ -142,9 +152,8 @@
               >
                 Book
               </button>
-              <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
             </div>
-          </mat-step>
+          </mat-step> -->
         </mat-stepper>
       </div>
     </div>

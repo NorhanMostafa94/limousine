@@ -9,6 +9,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 
+// 3rd parties
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+
 // Components
 import { HeaderComponent } from './components';
 
@@ -28,11 +31,13 @@ const ANGULAR_MATERIAL = [
     FormsModule,
     ReactiveFormsModule,
     MatNativeDateModule,
+    NgxMaterialTimepickerModule,
     ...ANGULAR_MATERIAL,
   ],
   exports: [
     FormsModule,
     ReactiveFormsModule,
+    NgxMaterialTimepickerModule,
     ...COMPONENTS,
     ...ANGULAR_MATERIAL,
   ],
