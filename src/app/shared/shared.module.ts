@@ -8,6 +8,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatIconModule } from '@angular/material/icon';
 
 // 3rd parties
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
@@ -22,6 +23,7 @@ const ANGULAR_MATERIAL = [
   MatInputModule,
   MatFormFieldModule,
   MatDatepickerModule,
+  MatIconModule,
 ];
 
 @NgModule({

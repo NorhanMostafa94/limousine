@@ -17,7 +17,8 @@ import {
   ServiceCardComponent,
   ServicesComponent,
   ContactUsComponent,
-  GalleryCardComponent
+  GalleryCardComponent,
+  ContactUsCardComponent,
 } from './components/';
 
 const PAGES = [HomeComponent];
@@ -28,7 +29,8 @@ const COMPONENTS = [
   ServiceCardComponent,
   ServicesComponent,
   ContactUsComponent,
-  GalleryCardComponent
+  GalleryCardComponent,
+  ContactUsCardComponent,
 ];
 
 @NgModule({
