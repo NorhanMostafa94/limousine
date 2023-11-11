@@ -10,6 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 // 3rd parties
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
@@ -26,6 +27,7 @@ const ANGULAR_MATERIAL = [
   MatDatepickerModule,
   MatIconModule,
   MatSelectModule,
+  MatCheckboxModule,
 ];
 
 @NgModule({

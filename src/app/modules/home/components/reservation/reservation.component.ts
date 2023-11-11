@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-reservation',
@@ -24,6 +29,21 @@ export class ReservationComponent implements OnInit {
     },
   ];
 
+  serviceTypes: any[] = [
+    {
+      id: '1',
+      name: 'Point-to-Point',
+    },
+    {
+      id: '2',
+      name: 'From Airport',
+    },
+    {
+      id: '3',
+      name: 'To Airport',
+    },
+  ];
+
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
@@ -44,11 +64,39 @@ export class ReservationComponent implements OnInit {
     this.pickupForm = this.fb.group({
       serviceType: ['', Validators.required],
       date: ['', [Validators.required]],
-      time: ['11:11 am', [Validators.required]],
+      time: ['11:11 AM', [Validators.required]],
       location: ['', [Validators.required]],
       state: ['', [Validators.required]],
       city: ['', [Validators.required]],
+      differentDropoff: [false],
+      dropoffLocation: [''],
+      dropoffState: [''],
+      dropoffCity: [''],
+      numberOfPassengers: [1, [Validators.required]],
     });
+  }
+
+  getControl(formGroup: FormGroup, control: string): string {
+    return formGroup.get(control)?.value;
+  }
+
+  differentLocationToggle(checked: boolean) {
+    if (checked) {
+      this.pickupForm
+        .get('dropoffLocation')
+        ?.setValidators([Validators.required]);
+      this.pickupForm.get('dropoffState')?.setValidators([Validators.required]);
+      this.pickupForm.get('dropoffCity')?.setValidators([Validators.required]);
+    } else {
+      this.pickupForm.get('dropoffLocation')?.setValidators(null);
+      this.pickupForm.get('dropoffState')?.setValidators(null);
+      this.pickupForm.get('dropoffCity')?.setValidators(null);
+
+      this.pickupForm.get('dropoffLocation')?.patchValue('');
+      this.pickupForm.get('dropoffState')?.patchValue('');
+      this.pickupForm.get('dropoffCity')?.patchValue('');
+    }
+    this.pickupForm.updateValueAndValidity();
   }
 
   submit(): void {
