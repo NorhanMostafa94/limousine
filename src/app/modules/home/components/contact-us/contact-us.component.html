@@ -1,0 +1,53 @@
+<section class="contact-us p-5">
+  <div class="container">
+    <div class="row justify-content-center text-center">
+      <div class="col-12 col-md-8">
+        <h2 class="text-white">GET IN TOUCH</h2>
+        <p class="text-white">
+          Contact us with the most convenient method, or send us a message using
+          the form below.
+        </p>
+      </div>
+    </div>
+
+    <form [formGroup]="contactUsForm">
+      <div class="row">
+        <div class="col-12 col-md-6 mb-3">
+          <div class="row">
+            <div class="col-12">
+              <label class="d-block text-white">Name</label>
+              <mat-form-field class="w-100">
+                <input matInput formControlName="name" required />
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <label class="d-block text-white">Email</label>
+              <mat-form-field class="w-100">
+                <input matInput formControlName="email" required />
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <label class="d-block text-white">Message</label>
+              <mat-form-field class="w-100">
+                <textarea matInput formControlName="message" required> </textarea>
+              </mat-form-field>
+            </div>
+          </div>
+    
+          <div class="row">
+            <div>
+              <button mat-button class="btn btn--sm btn--primary">Submit</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <app-contact-us-card></app-contact-us-card>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
