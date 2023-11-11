@@ -12,7 +12,87 @@
     </div>
     <div class="row justify-content-center pt-5">
       <div class="col-12 col-md-8">
-        <mat-stepper [linear]="false" #stepper>
+        <mat-stepper [linear]="true" #stepper>
+          <mat-step [stepControl]="pickupForm" label="Fill out your address">
+            <form [formGroup]="pickupForm">
+              <div class="row pt-4">
+                <div class="col-12 col-md-6">
+                  <label class="d-block">Date</label>
+                  <mat-form-field class="w-100">
+                    <input
+                      matInput
+                      [matDatepicker]="picker"
+                      required
+                      formControlName="date"
+                    />
+                    <mat-datepicker-toggle
+                      matIconSuffix
+                      [for]="picker"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+                <div class="col-12 col-md-6 mb-4">
+                  <label class="d-block">Time</label>
+                  <ngx-timepicker-field
+                    [defaultTime]="'11:11 am'"
+                    matInput
+                    formControlName="time"
+                    [controlOnly]="true"
+                  ></ngx-timepicker-field>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12">
+                  <label class="d-block">Location</label>
+                  <mat-form-field class="w-100">
+                    <input
+                      matInput
+                      placeholder="Enter location"
+                      formControlName="location"
+                      required
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row pt-4">
+                <div class="col-12 col-md-6">
+                  <label class="d-block">State</label>
+                  <mat-form-field class="w-100">
+                    <mat-select formControlName="state">
+                      <mat-option
+                        [value]="state.id"
+                        *ngFor="let state of states"
+                      >
+                        {{ state.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-12 col-md-6">
+                  <label class="d-block">city</label>
+                  <mat-form-field class="w-100">
+                    <mat-select formControlName="city">
+                      <mat-option [value]="city.id" *ngFor="let city of cities">
+                        {{ city.name }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div>
+                <button
+                  mat-button
+                  matStepperNext
+                  class="btn btn--sm btn--primary"
+                >
+                  Next
+                </button>
+              </div>
+            </form>
+          </mat-step>
           <mat-step [stepControl]="userInfoForm">
             <form [formGroup]="userInfoForm">
               <ng-template matStepLabel>Fill out your name</ng-template>
@@ -68,60 +148,7 @@
                   </mat-form-field>
                 </div>
               </div>
-              <div>
-                <button
-                  mat-button
-                  matStepperNext
-                  class="btn btn--sm btn--primary"
-                >
-                  Next
-                </button>
-              </div>
-            </form>
-          </mat-step>
-          <mat-step [stepControl]="pickupForm" label="Fill out your address">
-            <form [formGroup]="pickupForm">
-              <div class="row pt-4">
-                <div class="col-12 col-md-6">
-                  <label class="d-block">Date</label>
-                  <mat-form-field class="w-100">
-                    <input
-                      matInput
-                      [matDatepicker]="picker"
-                      required
-                      formControlName="date"
-                    />
-                    <mat-datepicker-toggle
-                      matIconSuffix
-                      [for]="picker"
-                    ></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
-                  </mat-form-field>
-                </div>
-                <div class="col-12 col-md-6 mb-4">
-                  <label class="d-block">Time</label>
-                  <ngx-timepicker-field
-                    [defaultTime]="'11:11 am'"
-                    matInput
-                    formControlName="time"
-                    [controlOnly]="true"
-                  ></ngx-timepicker-field>
-                </div>
-              </div>
 
-              <div class="row">
-                <div class="col-12">
-                  <label class="d-block">Location</label>
-                  <mat-form-field class="w-100">
-                    <input
-                      matInput
-                      placeholder="Enter location"
-                      formControlName="location"
-                      required
-                    />
-                  </mat-form-field>
-                </div>
-              </div>
               <div class="d-flex">
                 <button
                   mat-button
@@ -133,27 +160,15 @@
                 <button
                   mat-button
                   matStepperNext
+                  type="submit"
                   class="btn btn--sm btn--primary"
+                  (click)="submit()"
                 >
                   Book
                 </button>
               </div>
             </form>
           </mat-step>
-          <!-- <mat-step>
-            <ng-template matStepLabel>Done</ng-template>
-            <p>You are now done.</p>
-            <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button
-                class="btn btn--sm btn--primary"
-                type="submit"
-                (click)="submit()"
-              >
-                Book
-              </button>
-            </div>
-          </mat-step> -->
         </mat-stepper>
       </div>
     </div>

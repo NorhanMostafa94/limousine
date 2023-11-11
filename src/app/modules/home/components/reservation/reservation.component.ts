@@ -9,6 +9,21 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ReservationComponent implements OnInit {
   userInfoForm!: FormGroup;
   pickupForm!: FormGroup;
+
+  states: any[] = [
+    {
+      id: '1',
+      name: 'USA',
+    },
+  ];
+
+  cities: any[] = [
+    {
+      id: '1',
+      name: 'USA',
+    },
+  ];
+
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
@@ -27,9 +42,12 @@ export class ReservationComponent implements OnInit {
 
   initPickupForm(): void {
     this.pickupForm = this.fb.group({
+      serviceType: ['', Validators.required],
       date: ['', [Validators.required]],
-      time: ['', [Validators.required]],
+      time: ['11:11 am', [Validators.required]],
       location: ['', [Validators.required]],
+      state: ['', [Validators.required]],
+      city: ['', [Validators.required]],
     });
   }
 
