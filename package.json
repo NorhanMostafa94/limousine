@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod --base-href https://norhanmostafa94.github.io/limousine/ ",
+    "deploy": "ng deploy --base-href https://norhanmostafa94.github.io/limousine/ --repo=https://github.com/norhanmostafa94.github.io/limousine.git",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
