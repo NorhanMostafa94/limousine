@@ -3,4 +3,17 @@
 .contact-us {
     // height: 50rem;
     background-color: $bg-dark;
+
+    &__footer {
+        background-color: rgba($color: $bg-dark, $alpha: 0.8);
+
+        &-item {
+            .icon {
+                width: 30px !important;
+            }
+            .text{
+                width: calc(100% - 30px);
+            }
+        }
+    }
 }
