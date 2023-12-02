@@ -2,7 +2,7 @@
 
 .services {
     &__card {
-        height: 30rem;
+        height: 20rem;
         position: relative;
         overflow: hidden;
         &-overlay {
@@ -30,7 +30,7 @@
 
         &:hover {
             .services__card-img {
-                transform: scale(1.5);
+                transform: scale(1.2);
             }
         }
     }

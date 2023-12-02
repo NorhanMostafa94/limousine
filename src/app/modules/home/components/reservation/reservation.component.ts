@@ -32,15 +32,15 @@ export class ReservationComponent implements OnInit {
   serviceTypes: any[] = [
     {
       id: '1',
-      name: 'Point-to-Point',
+      name: 'Sedan',
     },
     {
       id: '2',
-      name: 'From Airport',
+      name: 'SUV',
     },
     {
       id: '3',
-      name: 'To Airport',
+      name: 'Luxury',
     },
   ];
 

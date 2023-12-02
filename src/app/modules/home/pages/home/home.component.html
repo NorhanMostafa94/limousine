@@ -2,7 +2,7 @@
   <div
     class="home__header h-100 d-flex align-items-center justify-content-between"
   >
-    <div class="row m-0 w-100 justify-content-end">
+    <!-- <div class="row m-0 w-100 justify-content-end">
       <div class="col-sm-4">
         <div
           class="home__header-text h-100 d-flex flex-column justify-content-center"
@@ -20,12 +20,112 @@
           </div>
         </div>
       </div>
-      <!-- <div class="col-sm-8">
-        <div class="home__header-img">
-          <img src="assets/images/car.png" alt="home" class="img-fluid" />
+    </div> -->
+    <div id="carouselExampleAutoplaying" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button
+          type="button"
+          data-bs-target="#carouselExampleCaptions"
+          data-bs-slide-to="0"
+          class="active"
+          aria-current="true"
+          aria-label="Slide 1"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleAutoplaying"
+          data-bs-slide-to="1"
+          aria-label="Slide 2"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleAutoplaying"
+          data-bs-slide-to="2"
+          aria-label="Slide 3"
+        ></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div
+            class="home__header-text carousel-caption h-100 d-flex flex-column justify-content-center"
+          >
+            <div class="description">
+              <span class="main-text">BEST LIMO SERVICES</span>
+              <p class="sub-text text-white">PRO CHAUFFEURS</p>
+            </div>
+            <div class="d-flex justify-content-center mt-3">
+              <a href="#form" class="text-decoration-none">
+                <button class="btn btn--md btn--primary">Book Now</button>
+              </a>
+            </div>
+          </div>
+          <img
+            src="assets/images/gallery/12.jpg"
+            class="d-block w-100"
+            alt="assets/images/home-cover.jpg"
+          />
         </div>
-      </div> -->
+        <div class="carousel-item">
+          <div
+            class="home__header-text carousel-caption h-100 d-flex flex-column justify-content-center"
+          >
+            <div class="description">
+              <span class="main-text">BEST LIMO SERVICES</span>
+              <p class="sub-text text-white">A STYLISH RIDE</p>
+            </div>
+            <div class="d-flex justify-content-center mt-3">
+              <a href="#form" class="text-decoration-none">
+                <button class="btn btn--md btn--primary">Book Now</button>
+              </a>
+            </div>
+          </div>
+          <img
+            src="assets/images/gallery/1.jpg"
+            class="d-block w-100"
+            alt="assets/images/home-cover.jpg"
+          />
+        </div>
+        <div class="carousel-item">
+          <div
+            class="home__header-text carousel-caption h-100 d-flex flex-column justify-content-center"
+          >
+            <div class="description">
+              <span class="main-text">BEST LIMO SERVICES</span>
+              <p class="sub-text text-white">A SMOOTH TRIP</p>
+            </div>
+            <div class="d-flex justify-content-center mt-3">
+              <a href="#form" class="text-decoration-none">
+                <button class="btn btn--md btn--primary">Book Now</button>
+              </a>
+            </div>
+          </div>
+          <img
+            src="assets/images/gallery/14.jpg"
+            class="d-block w-100"
+            alt="assets/images/home-cover.jpg"
+          />
+        </div>
+      </div>
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExampleAutoplaying"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExampleAutoplaying"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
+    
   </div>
 
   <app-about-us id="about"></app-about-us>
@@ -40,8 +140,10 @@
 
   <a
     href="#form"
-    class="position-fixed bottom-0 end-0 text-decoration-none m-5"
+    class="position-fixed bottom-0 end-0 text-decoration-none m-5 z-3"
   >
-    <button class="btn btn--md btn--primary">Book Now</button>
+    <button class="btn btn--primary rounded-circle p-3 w-100 h-100">
+      <img class="w-75 h-75" src="assets/images/booking.png" alt="">
+    </button>
   </a>
 </section>
