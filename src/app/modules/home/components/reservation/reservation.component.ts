@@ -15,21 +15,7 @@ export class ReservationComponent implements OnInit {
   userInfoForm!: FormGroup;
   pickupForm!: FormGroup;
 
-  states: any[] = [
-    {
-      id: '1',
-      name: 'USA',
-    },
-  ];
-
-  cities: any[] = [
-    {
-      id: '1',
-      name: 'USA',
-    },
-  ];
-
-  serviceTypes: any[] = [
+  categoryTypes: any[] = [
     {
       id: '1',
       name: 'Sedan',
@@ -41,6 +27,17 @@ export class ReservationComponent implements OnInit {
     {
       id: '3',
       name: 'Luxury',
+    },
+  ];
+
+  hourlyTypes: any[] = [
+    {
+      id: 'hourly',
+      name: 'Hourly',
+    },
+    {
+      id: 'pickup-dropoff',
+      name: 'Pick up/Drop off',
     },
   ];
 
@@ -62,22 +59,35 @@ export class ReservationComponent implements OnInit {
 
   initPickupForm(): void {
     this.pickupForm = this.fb.group({
-      serviceType: ['', Validators.required],
+      categoryType: ['', Validators.required],
       date: ['', [Validators.required]],
       time: ['11:11 AM', [Validators.required]],
       location: ['', [Validators.required]],
-      state: ['', [Validators.required]],
-      city: ['', [Validators.required]],
       differentDropoff: [false],
       dropoffLocation: [''],
-      dropoffState: [''],
-      dropoffCity: [''],
+      hourlyType: ['', [Validators.required]],
+      hours: [1],
+      notes: [''],
       numberOfPassengers: [1, [Validators.required]],
     });
   }
 
   getControl(formGroup: FormGroup, control: string): string {
     return formGroup.get(control)?.value;
+  }
+
+  hourlyValueChanges(id: string): void {
+    if (id === 'hourly') {
+      this.pickupForm.get('hours')?.setValidators([Validators.required]);
+      this.pickupForm.get('location')?.setValidators(null);
+      this.pickupForm.get('state')?.setValidators(null);
+      this.pickupForm.get('city')?.setValidators(null);
+    } else {
+      this.pickupForm.get('hourly')?.setValidators(null);
+      this.pickupForm.get('location')?.setValidators([Validators.required]);
+      this.pickupForm.get('state')?.setValidators([Validators.required]);
+      this.pickupForm.get('city')?.setValidators([Validators.required]);
+    }
   }
 
   differentLocationToggle(checked: boolean) {

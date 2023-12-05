@@ -17,14 +17,14 @@
             <form [formGroup]="pickupForm">
               <div class="row pt-4">
                 <div class="col-12">
-                  <label class="d-block">Service Type</label>
+                  <label class="d-block">Category Type</label>
                   <mat-form-field class="w-100">
-                    <mat-select formControlName="serviceType">
+                    <mat-select formControlName="categoryType">
                       <mat-option
-                        [value]="service.id"
-                        *ngFor="let service of serviceTypes"
+                        [value]="category.id"
+                        *ngFor="let category of categoryTypes"
                       >
-                        {{ service.name }}
+                        {{ category.name }}
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
@@ -60,96 +60,93 @@
 
               <div class="row">
                 <div class="col-12">
-                  <label class="d-block">Pick up Location</label>
+                  <label class="d-block">Hourly Type</label>
                   <mat-form-field class="w-100">
-                    <input
-                      matInput
-                      placeholder="Enter location"
-                      formControlName="location"
-                      required
-                    />
-                  </mat-form-field>
-                </div>
-              </div>
-              <div class="row pt-4">
-                <div class="col-12 col-md-6">
-                  <label class="d-block">Pick up State</label>
-                  <mat-form-field class="w-100">
-                    <mat-select formControlName="state">
+                    <mat-select
+                      formControlName="hourlyType"
+                      (selectionChange)="hourlyValueChanges($event.value)"
+                    >
                       <mat-option
-                        [value]="state.id"
-                        *ngFor="let state of states"
+                        [value]="hourly.id"
+                        *ngFor="let hourly of hourlyTypes"
                       >
-                        {{ state.name }}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
-                </div>
-                <div class="col-12 col-md-6">
-                  <label class="d-block">Pick up city</label>
-                  <mat-form-field class="w-100">
-                    <mat-select formControlName="city">
-                      <mat-option [value]="city.id" *ngFor="let city of cities">
-                        {{ city.name }}
+                        {{ hourly.name }}
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
                 </div>
               </div>
 
-              <div class="row">
-                <label class="d-block">
-                  <mat-checkbox
-                    formControlName="differentDropoff"
-                    (change)="differentLocationToggle($event.checked)"
-                    >Return at different location
-                  </mat-checkbox>
-                </label>
-              </div>
-
-              <ng-container *ngIf="getControl(pickupForm, 'differentDropoff')">
-                <div class="row pt-4">
+              <ng-container
+                *ngIf="getControl(pickupForm, 'hourlyType') === 'pickup-dropoff'"
+              >
+                <div class="row">
                   <div class="col-12">
-                    <label class="d-block">Drop off Location</label>
+                    <label class="d-block">Pick up Location</label>
                     <mat-form-field class="w-100">
                       <input
                         matInput
                         placeholder="Enter location"
-                        formControlName="dropoffLocation"
+                        formControlName="location"
                         required
                       />
                     </mat-form-field>
                   </div>
                 </div>
-                <div class="row pt-4">
-                  <div class="col-12 col-md-6">
-                    <label class="d-block">Drop off State</label>
-                    <mat-form-field class="w-100">
-                      <mat-select formControlName="dropoffState">
-                        <mat-option
-                          [value]="state.id"
-                          *ngFor="let state of states"
-                        >
-                          {{ state.name }}
-                        </mat-option>
-                      </mat-select>
-                    </mat-form-field>
+
+                <div class="row">
+                  <label class="d-block">
+                    <mat-checkbox
+                      formControlName="differentDropoff"
+                      (change)="differentLocationToggle($event.checked)"
+                      >Return at different location
+                    </mat-checkbox>
+                  </label>
+                </div>
+
+                <ng-container
+                  *ngIf="getControl(pickupForm, 'differentDropoff')"
+                >
+                  <div class="row pt-4">
+                    <div class="col-12">
+                      <label class="d-block">Drop off Location</label>
+                      <mat-form-field class="w-100">
+                        <input
+                          matInput
+                          placeholder="Enter location"
+                          formControlName="dropoffLocation"
+                          required
+                        />
+                      </mat-form-field>
+                    </div>
                   </div>
-                  <div class="col-12 col-md-6">
-                    <label class="d-block">Drop off city</label>
+                </ng-container>
+              </ng-container>
+
+              <ng-container
+                *ngIf="
+                  getControl(pickupForm, 'hourlyType') === 'hourly'
+                "
+              >
+                <div class="row">
+                  <div class="col-12">
+                    <label class="d-block">Number of hours</label>
                     <mat-form-field class="w-100">
-                      <mat-select formControlName="dropoffCity">
-                        <mat-option
-                          [value]="city.id"
-                          *ngFor="let city of cities"
-                        >
-                          {{ city.name }}
-                        </mat-option>
-                      </mat-select>
+                      <input
+                        matInput
+                        placeholder="Enter Hours"
+                        formControlName="hours"
+                        min="1"
+                        type="number"
+                        required
+                      />
                     </mat-form-field>
                   </div>
                 </div>
+                
               </ng-container>
+              
+
               <div class="row pt-4">
                 <div class="col-12 col-md-6">
                   <label class="d-block">Number of passengers</label>
@@ -161,6 +158,19 @@
                       min="1"
                       type="number"
                     />
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12">
+                  <label class="d-block">Notes</label>
+                  <mat-form-field class="w-100">
+                    <textarea
+                      matInput
+                      placeholder="Enter Notes"
+                      formControlName="notes"
+                    ></textarea>
                   </mat-form-field>
                 </div>
               </div>
