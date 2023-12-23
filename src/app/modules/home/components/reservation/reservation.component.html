@@ -13,7 +13,7 @@
     <div class="row justify-content-center pt-5">
       <div class="col-12 col-md-8">
         <mat-stepper [linear]="true" #stepper>
-          <mat-step [stepControl]="pickupForm" label="Fill out your address">
+          <mat-step [stepControl]="pickupForm" label="Fill out your Travel Details">
             <form [formGroup]="pickupForm">
               <div class="row pt-4">
                 <div class="col-12">
@@ -38,7 +38,7 @@
                       matInput
                       [matDatepicker]="picker"
                       required
-                      formControlName="date"
+                      formControlName="travelDate"
                     />
                     <mat-datepicker-toggle
                       matIconSuffix
@@ -52,7 +52,7 @@
                   <ngx-timepicker-field
                     [defaultTime]="'11:11 AM'"
                     matInput
-                    formControlName="time"
+                    formControlName="travelTime"
                     [controlOnly]="true"
                   ></ngx-timepicker-field>
                 </div>
@@ -60,15 +60,15 @@
 
               <div class="row">
                 <div class="col-12">
-                  <label class="d-block">Hourly Type</label>
+                  <label class="d-block">Travel Type</label>
                   <mat-form-field class="w-100">
                     <mat-select
-                      formControlName="hourlyType"
+                      formControlName="travelType"
                       (selectionChange)="hourlyValueChanges($event.value)"
                     >
                       <mat-option
                         [value]="hourly.id"
-                        *ngFor="let hourly of hourlyTypes"
+                        *ngFor="let hourly of travelTypes"
                       >
                         {{ hourly.name }}
                       </mat-option>
@@ -78,7 +78,7 @@
               </div>
 
               <ng-container
-                *ngIf="getControl(pickupForm, 'hourlyType') === 'pickup-dropoff'"
+                *ngIf="getControl(pickupForm, 'travelType') === 'pickup-dropoff'"
               >
                 <div class="row">
                   <div class="col-12">
@@ -87,7 +87,7 @@
                       <input
                         matInput
                         placeholder="Enter location"
-                        formControlName="location"
+                        formControlName="pickupLocation"
                         required
                       />
                     </mat-form-field>
@@ -125,7 +125,7 @@
 
               <ng-container
                 *ngIf="
-                  getControl(pickupForm, 'hourlyType') === 'hourly'
+                  getControl(pickupForm, 'travelType') === 'hourly'
                 "
               >
                 <div class="row">
@@ -179,15 +179,15 @@
                   mat-button
                   matStepperNext
                   class="btn btn--sm btn--primary"
+                  (click)="submit()"
                 >
                   Next
                 </button>
               </div>
             </form>
           </mat-step>
-          <mat-step [stepControl]="userInfoForm">
+          <mat-step [stepControl]="userInfoForm" label="Fill out your Personal Info">
             <form [formGroup]="userInfoForm">
-              <ng-template matStepLabel>Fill out your name</ng-template>
 
               <div class="row pt-4">
                 <div class="col-12 col-md-6">
@@ -234,7 +234,7 @@
                       matInput
                       type="number"
                       placeholder="Enter mobile"
-                      formControlName="mobile"
+                      formControlName="mobileNumber"
                       required
                     />
                   </mat-form-field>

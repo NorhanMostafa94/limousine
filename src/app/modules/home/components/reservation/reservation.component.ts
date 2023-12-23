@@ -5,6 +5,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { HomeService } from '../../services/home.service';
+import { ReservationPayload } from '../../models/reservation-payload';
 
 @Component({
   selector: 'app-reservation',
@@ -30,7 +32,7 @@ export class ReservationComponent implements OnInit {
     },
   ];
 
-  hourlyTypes: any[] = [
+  travelTypes: any[] = [
     {
       id: 'hourly',
       name: 'Hourly',
@@ -41,7 +43,7 @@ export class ReservationComponent implements OnInit {
     },
   ];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private homeService: HomeService) {}
 
   ngOnInit(): void {
     this.initUserInfoForm();
@@ -53,20 +55,20 @@ export class ReservationComponent implements OnInit {
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      mobile: ['', [Validators.required]],
+      mobileNumber: ['', [Validators.required]],
     });
   }
 
   initPickupForm(): void {
     this.pickupForm = this.fb.group({
       categoryType: ['', Validators.required],
-      date: ['', [Validators.required]],
-      time: ['11:11 AM', [Validators.required]],
-      location: ['', [Validators.required]],
+      travelDate: ['', [Validators.required]],
+      travelTime: ['11:11 AM', [Validators.required]],
+      pickupLocation: [''],
       differentDropoff: [false],
       dropoffLocation: [''],
-      hourlyType: ['', [Validators.required]],
-      hours: [1],
+      travelType: ['', [Validators.required]],
+      hours: [],
       notes: [''],
       numberOfPassengers: [1, [Validators.required]],
     });
@@ -77,40 +79,53 @@ export class ReservationComponent implements OnInit {
   }
 
   hourlyValueChanges(id: string): void {
+    debugger;
     if (id === 'hourly') {
+      this.pickupForm.get('hours')?.patchValue('');
       this.pickupForm.get('hours')?.setValidators([Validators.required]);
-      this.pickupForm.get('location')?.setValidators(null);
-      this.pickupForm.get('state')?.setValidators(null);
-      this.pickupForm.get('city')?.setValidators(null);
+
+      this.pickupForm.get('pickupLocation')?.patchValue('');
+      this.pickupForm
+        .get('pickupLocation')
+        ?.removeValidators([Validators.required]);
     } else {
-      this.pickupForm.get('hourly')?.setValidators(null);
-      this.pickupForm.get('location')?.setValidators([Validators.required]);
-      this.pickupForm.get('state')?.setValidators([Validators.required]);
-      this.pickupForm.get('city')?.setValidators([Validators.required]);
+      this.pickupForm.get('hours')?.patchValue('');
+      this.pickupForm.get('hours')?.setValidators(null);
+
+      this.pickupForm.get('pickupLocation')?.patchValue('');
+      this.pickupForm
+        .get('pickupLocation')
+        ?.setValidators([Validators.required]);
     }
+    this.pickupForm.get('hours')?.updateValueAndValidity();
+    this.pickupForm.get('pickupLocation')?.updateValueAndValidity();
   }
 
   differentLocationToggle(checked: boolean) {
+    this.pickupForm.get('dropoffLocation')?.patchValue('');
     if (checked) {
       this.pickupForm
         .get('dropoffLocation')
         ?.setValidators([Validators.required]);
-      this.pickupForm.get('dropoffState')?.setValidators([Validators.required]);
-      this.pickupForm.get('dropoffCity')?.setValidators([Validators.required]);
     } else {
       this.pickupForm.get('dropoffLocation')?.setValidators(null);
-      this.pickupForm.get('dropoffState')?.setValidators(null);
-      this.pickupForm.get('dropoffCity')?.setValidators(null);
-
-      this.pickupForm.get('dropoffLocation')?.patchValue('');
-      this.pickupForm.get('dropoffState')?.patchValue('');
-      this.pickupForm.get('dropoffCity')?.patchValue('');
     }
-    this.pickupForm.updateValueAndValidity();
+    this.pickupForm.get('dropoffLocation')?.updateValueAndValidity();
   }
 
   submit(): void {
     console.log(this.userInfoForm.value);
-    console.log(this.pickupForm.value);
+    console.log(this.pickupForm);
+
+    const reservationPayload: ReservationPayload = {
+      emailType: 'Reservation',
+      reservationDto: {
+        travelInfo: this.pickupForm.value,
+        personalInfo: this.userInfoForm.value,
+      },
+    };
+    this.homeService.reserve(reservationPayload).subscribe((res) => {
+      console.log(res);
+    });
   }
 }

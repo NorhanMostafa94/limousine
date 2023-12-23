@@ -10,7 +10,7 @@
       </div>
     </div>
 
-    <form [formGroup]="contactUsForm">
+    <form [formGroup]="contactUsForm" (ngSubmit)="submit()">
       <div class="row">
         <div class="col-12 mb-3">
           <div class="row">
@@ -46,15 +46,12 @@
 
           <div class="row">
             <div>
-              <button mat-button class="btn btn--sm btn--primary">
+              <button mat-button type="submit" class="btn btn--sm btn--primary">
                 Submit
               </button>
             </div>
           </div>
         </div>
-        <!-- <div class="col-12 col-md-6">
-          <app-contact-us-card></app-contact-us-card>
-        </div> -->
       </div>
     </form>
 
@@ -84,9 +81,11 @@
                 <div class="text border-start px-3 mx-2">
                   <div class="text-white d-flex flex-wrap">
                     <span class="text-primary">CONTACT:</span>
-                    <span class=""> +1 (424) 309-2550 - +1 (310) 303-0791 </span>
+                    <span class="">
+                      +1 (424) 309-2550 - +1 (310) 303-0791
+                    </span>
                   </div>
-                  <span class="text-white"> MJM.limo@yahoo.com </span>
+                  <span class="text-white"> MJM-Limo@outlook.com </span>
                 </div>
               </div>
             </div>
