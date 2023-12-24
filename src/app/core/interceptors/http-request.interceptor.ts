@@ -7,7 +7,6 @@ export class HttpRequestInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    debugger
     request = request.clone({
       setHeaders: {
         'Content-Type': 'application/json'
