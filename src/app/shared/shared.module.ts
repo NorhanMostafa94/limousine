@@ -17,6 +17,8 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 // Components
 import { HeaderComponent } from './components';
+import { SnackbarComponent } from './components/snackbar/snackbar.component';
+import { MAT_SNACK_BAR_DATA, MatSnackBarModule } from '@angular/material/snack-bar';
 
 const COMPONENTS = [HeaderComponent];
 
@@ -28,10 +30,11 @@ const ANGULAR_MATERIAL = [
   MatIconModule,
   MatSelectModule,
   MatCheckboxModule,
+  MatSnackBarModule
 ];
 
 @NgModule({
-  declarations: [...COMPONENTS],
+  declarations: [...COMPONENTS, SnackbarComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -46,6 +49,8 @@ const ANGULAR_MATERIAL = [
     NgxMaterialTimepickerModule,
     ...COMPONENTS,
     ...ANGULAR_MATERIAL,
+    SnackbarComponent,
   ],
+  providers: [{ provide: MAT_SNACK_BAR_DATA, useValue: {} }],
 })
 export class SharedModule {}

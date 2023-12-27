@@ -13,7 +13,10 @@
     <div class="row justify-content-center pt-5">
       <div class="col-12 col-md-8">
         <mat-stepper [linear]="true" #stepper>
-          <mat-step [stepControl]="pickupForm" label="Fill out your Travel Details">
+          <mat-step
+            [stepControl]="pickupForm"
+            label="Fill out your Travel Details"
+          >
             <form [formGroup]="pickupForm">
               <div class="row pt-4">
                 <div class="col-12">
@@ -78,7 +81,9 @@
               </div>
 
               <ng-container
-                *ngIf="getControl(pickupForm, 'travelType') === 'pickup-dropoff'"
+                *ngIf="
+                  getControl(pickupForm, 'travelType') === 'pickup-dropoff'
+                "
               >
                 <div class="row">
                   <div class="col-12">
@@ -124,9 +129,7 @@
               </ng-container>
 
               <ng-container
-                *ngIf="
-                  getControl(pickupForm, 'travelType') === 'hourly'
-                "
+                *ngIf="getControl(pickupForm, 'travelType') === 'hourly'"
               >
                 <div class="row">
                   <div class="col-12">
@@ -143,9 +146,7 @@
                     </mat-form-field>
                   </div>
                 </div>
-                
               </ng-container>
-              
 
               <div class="row pt-4">
                 <div class="col-12 col-md-6">
@@ -186,9 +187,11 @@
               </div>
             </form>
           </mat-step>
-          <mat-step [stepControl]="userInfoForm" label="Fill out your Personal Info">
+          <mat-step
+            [stepControl]="userInfoForm"
+            label="Fill out your Personal Info"
+          >
             <form [formGroup]="userInfoForm">
-
               <div class="row pt-4">
                 <div class="col-12 col-md-6">
                   <label class="d-block">First Name</label>
@@ -255,6 +258,7 @@
                   type="submit"
                   class="btn btn--sm btn--primary"
                   (click)="submit()"
+                  [disabled]="loading"
                 >
                   Book
                 </button>

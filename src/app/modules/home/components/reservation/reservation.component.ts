@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { HomeService } from '../../services/home.service';
 import { ReservationPayload } from '../../models/reservation-payload';
+import { SnackbarService } from 'src/app/shared/components/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-reservation',
@@ -43,7 +44,13 @@ export class ReservationComponent implements OnInit {
     },
   ];
 
-  constructor(private fb: FormBuilder, private homeService: HomeService) {}
+  loading: boolean = false;
+
+  constructor(
+    private fb: FormBuilder,
+    private homeService: HomeService,
+    private snackbarService: SnackbarService
+  ) {}
 
   ngOnInit(): void {
     this.initUserInfoForm();
@@ -79,7 +86,6 @@ export class ReservationComponent implements OnInit {
   }
 
   hourlyValueChanges(id: string): void {
-    debugger;
     if (id === 'hourly') {
       this.pickupForm.get('hours')?.patchValue('');
       this.pickupForm.get('hours')?.setValidators([Validators.required]);
@@ -117,6 +123,7 @@ export class ReservationComponent implements OnInit {
     console.log(this.userInfoForm.value);
     console.log(this.pickupForm);
 
+    this.loading = true;
     const reservationPayload: ReservationPayload = {
       emailType: 'Reservation',
       reservationDto: {
@@ -124,8 +131,19 @@ export class ReservationComponent implements OnInit {
         personalInfo: this.userInfoForm.value,
       },
     };
-    this.homeService.reserve(reservationPayload).subscribe((res) => {
-      console.log(res);
-    });
+    this.homeService.reserve(reservationPayload).subscribe(
+      (res) => {
+        this.loading = false;
+        this.snackbarService.openSnackBarSuccess(
+          'Thank you for submitting form. We received your info Our Team will contact with you soon'
+        );
+      },
+      (err) => {
+        this.loading = false;
+        this.snackbarService.openSnackBarFailure(
+          'we cannot receive your information now kindly contact with us on WhatsApp'
+        );
+      }
+    );
   }
 }
