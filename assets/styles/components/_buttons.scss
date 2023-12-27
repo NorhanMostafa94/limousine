@@ -25,11 +25,11 @@
     &--primary {
         color: $white;
         background-color: $primary-main;
-        &:hover {
-            color: $primary-main;
-            background-color: transparent;
-            border: 1px solid $primary-main;
-        }
+        // &:hover {
+        //     color: $primary-main;
+        //     background-color: transparent;
+        //     border: 1px solid $primary-main;
+        // }
     }
 
     &--text {
