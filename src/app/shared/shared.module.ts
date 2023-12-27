@@ -11,6 +11,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 // 3rd parties
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
@@ -18,7 +19,10 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 // Components
 import { HeaderComponent } from './components';
 import { SnackbarComponent } from './components/snackbar/snackbar.component';
-import { MAT_SNACK_BAR_DATA, MatSnackBarModule } from '@angular/material/snack-bar';
+import {
+  MAT_SNACK_BAR_DATA,
+  MatSnackBarModule,
+} from '@angular/material/snack-bar';
 
 const COMPONENTS = [HeaderComponent];
 
@@ -30,7 +34,8 @@ const ANGULAR_MATERIAL = [
   MatIconModule,
   MatSelectModule,
   MatCheckboxModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatProgressSpinnerModule,
 ];
 
 @NgModule({

@@ -75,7 +75,7 @@ export class ReservationComponent implements OnInit {
       differentDropoff: [false],
       dropoffLocation: [''],
       travelType: ['', [Validators.required]],
-      hours: [],
+      numberOfHours: [],
       notes: [''],
       numberOfPassengers: [1, [Validators.required]],
     });
@@ -87,23 +87,23 @@ export class ReservationComponent implements OnInit {
 
   hourlyValueChanges(id: string): void {
     if (id === 'hourly') {
-      this.pickupForm.get('hours')?.patchValue('');
-      this.pickupForm.get('hours')?.setValidators([Validators.required]);
+      this.pickupForm.get('numberOfHours')?.patchValue('');
+      this.pickupForm.get('numberOfHours')?.setValidators([Validators.required]);
 
       this.pickupForm.get('pickupLocation')?.patchValue('');
       this.pickupForm
         .get('pickupLocation')
         ?.removeValidators([Validators.required]);
     } else {
-      this.pickupForm.get('hours')?.patchValue('');
-      this.pickupForm.get('hours')?.setValidators(null);
+      this.pickupForm.get('numberOfHours')?.patchValue('');
+      this.pickupForm.get('numberOfHours')?.setValidators(null);
 
       this.pickupForm.get('pickupLocation')?.patchValue('');
       this.pickupForm
         .get('pickupLocation')
         ?.setValidators([Validators.required]);
     }
-    this.pickupForm.get('hours')?.updateValueAndValidity();
+    this.pickupForm.get('numberOfHours')?.updateValueAndValidity();
     this.pickupForm.get('pickupLocation')?.updateValueAndValidity();
   }
 

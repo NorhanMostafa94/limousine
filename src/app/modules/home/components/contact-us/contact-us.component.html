@@ -52,6 +52,9 @@
                 class="btn btn--sm btn--primary"
                 [disabled]="loading"
               >
+              <mat-icon color="text-white" class="mx-2" *ngIf="loading">
+                <mat-spinner diameter="20"></mat-spinner>
+              </mat-icon>
                 Submit
               </button>
             </div>
@@ -88,28 +91,28 @@
                     <div class="text-white d-flex flex-wrap">
                       <span class="text-primary">CONTACT:</span>
                     </div>
-                    <div class="d-flex flex-column mx-1">
-                      <div class="text-white d-flex align-center">
-                        <mat-icon
-                          class="icon text-white"
-                          fontIcon="local_phone"
-                        ></mat-icon>
-                        +1 (424) 309-2550
-                      </div>
-                      <div class="text-white d-flex align-center">
-                        <mat-icon
-                          class="icon text-white"
-                          fontIcon="local_phone"
-                        ></mat-icon>
-                        +1 (310) 303-0791
-                      </div>
-                      <div class="text-white d-flex align-center flex-wrap">
-                        <mat-icon
-                          class="icon text-white"
-                          fontIcon="email"
-                        ></mat-icon>
-                        MJM-Limo@outlook.com
-                      </div>
+                  </div>
+                  <div class="d-flex flex-column mx-1">
+                    <div class="text-white d-flex align-center">
+                      <mat-icon
+                        class="icon text-white"
+                        fontIcon="local_phone"
+                      ></mat-icon>
+                      +1 (424) 309-2550
+                    </div>
+                    <div class="text-white d-flex align-center">
+                      <mat-icon
+                        class="icon text-white"
+                        fontIcon="local_phone"
+                      ></mat-icon>
+                      +1 (310) 303-0791
+                    </div>
+                    <div class="text-white d-flex align-center flex-wrap">
+                      <mat-icon
+                        class="icon text-white"
+                        fontIcon="email"
+                      ></mat-icon>
+                      MJM-Limo@outlook.com
                     </div>
                   </div>
                 </div>
