@@ -23,8 +23,8 @@
         padding-right: 5rem;
     }
     &--primary {
-        color: $white;
-        background-color: $primary-main;
+        color: $white !important;
+        background-color: $primary-main !important;
         &:active,
         &:focus,
         &:hover {

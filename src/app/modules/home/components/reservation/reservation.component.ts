@@ -87,17 +87,23 @@ export class ReservationComponent implements OnInit {
 
   hourlyValueChanges(id: string): void {
     if (id === 'hourly') {
-      this.pickupForm.get('numberOfHours')?.patchValue('');
-      this.pickupForm.get('numberOfHours')?.setValidators([Validators.required]);
+      this.pickupForm.get('numberOfHours')?.enable();
+      this.pickupForm.get('numberOfHours')?.patchValue(1);
+      this.pickupForm
+        .get('numberOfHours')
+        ?.setValidators([Validators.required]);
 
       this.pickupForm.get('pickupLocation')?.patchValue('');
       this.pickupForm
         .get('pickupLocation')
         ?.removeValidators([Validators.required]);
+      this.pickupForm.get('pickupLocation')?.disable();
     } else {
-      this.pickupForm.get('numberOfHours')?.patchValue('');
-      this.pickupForm.get('numberOfHours')?.setValidators(null);
+      this.pickupForm.get('numberOfHours')?.patchValue(0);
+      this.pickupForm.get('numberOfHours')?.removeValidators([Validators.required]);
+      this.pickupForm.get('numberOfHours')?.disable();
 
+      this.pickupForm.get('pickupLocation')?.enable();
       this.pickupForm.get('pickupLocation')?.patchValue('');
       this.pickupForm
         .get('pickupLocation')
