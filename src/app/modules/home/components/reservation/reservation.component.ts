@@ -120,9 +120,6 @@ export class ReservationComponent implements OnInit {
   }
 
   submit(): void {
-    console.log(this.userInfoForm.value);
-    console.log(this.pickupForm);
-
     this.loading = true;
     const reservationPayload: ReservationPayload = {
       emailType: 'Reservation',
